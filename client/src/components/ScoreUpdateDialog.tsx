@@ -117,7 +117,7 @@ export default function ScoreUpdateDialog({ teams, onUpdateScore, isUpdating }: 
           </div>
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={() => setOpen(false)}>
+          <Button variant="outline" onClick={() => setOpen(false)} data-testid="button-cancel-score">
             Cancel
           </Button>
           <Button onClick={handleSubmit} disabled={isUpdating} data-testid="button-submit-score">

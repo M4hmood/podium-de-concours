@@ -6,6 +6,7 @@ interface ProgressBarProps {
   showLabel?: boolean;
   size?: "sm" | "md" | "lg";
   variant?: "default" | "gold" | "silver" | "bronze";
+  testId?: string;
 }
 
 export default function ProgressBar({
@@ -14,6 +15,7 @@ export default function ProgressBar({
   showLabel = true,
   size = "md",
   variant = "default",
+  testId,
 }: ProgressBarProps) {
   const [animatedWidth, setAnimatedWidth] = useState(0);
   const percentage = Math.min((value / maxValue) * 100, 100);
@@ -46,7 +48,7 @@ export default function ProgressBar({
   }[variant];
 
   return (
-    <div className="flex items-center gap-3 w-full" data-testid="progress-bar">
+    <div className="flex items-center gap-3 w-full" data-testid={testId || "progress-bar"}>
       <div
         className={`flex-1 ${heightClass} bg-muted/50 rounded-full overflow-hidden relative`}
         role="progressbar"
@@ -54,10 +56,12 @@ export default function ProgressBar({
         aria-valuemin={0}
         aria-valuemax={maxValue}
         aria-label={`Progress: ${value} out of ${maxValue}`}
+        data-testid={testId ? `${testId}-track` : "progress-bar-track"}
       >
         <div
           className={`${heightClass} ${bgGradient} ${glowClass} rounded-full transition-all duration-1000 ease-out relative`}
           style={{ width: `${animatedWidth}%` }}
+          data-testid={testId ? `${testId}-fill` : "progress-bar-fill"}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-full" />
           {variant !== "default" && (
@@ -66,7 +70,10 @@ export default function ProgressBar({
         </div>
       </div>
       {showLabel && (
-        <span className="text-sm font-bold tabular-nums text-foreground min-w-[3rem] text-right">
+        <span 
+          className="text-sm font-bold tabular-nums text-foreground min-w-[3rem] text-right"
+          data-testid={testId ? `${testId}-value` : "progress-bar-value"}
+        >
           {value}%
         </span>
       )}
