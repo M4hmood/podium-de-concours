@@ -1,0 +1,128 @@
+🚀 CodeSandbox Prompt — Next.js Full-Stack App for Challenge 486
+
+Create a full-stack Next.js 14 (App Router) application for the “Podium des Concours – Nuit de l’Info 2025” challenge (ID 486).
+
+🎯 Goal
+
+Build a web app that displays:
+
+A podium with the top 3 teams
+
+A full leaderboard of all teams
+
+Progress visualization (progress bars or percentages)
+
+A clean, modern, accessible UI
+
+The app must be full-stack, meaning it must include a backend API + database + UI.
+
+🧱 Tech Requirements
+
+Next.js 14 using App Router
+
+TypeScript enabled
+
+TailwindCSS for styling
+
+API Routes using app/api/**/route.ts
+
+Database using a simple local file or mock DB (JSON or SQLite)
+
+Data must be fetched via API (not hardcoded in components)
+
+Deployable on Vercel or runnable inside CodeSandbox
+
+📄 Project Structure
+
+Create the following structure:
+
+/app
+  /page.tsx                → Home page
+  /dashboard/page.tsx      → Podium + Leaderboard UI
+  /components/Podium.tsx
+  /components/Leaderboard.tsx
+  /components/ProgressBar.tsx
+/api
+  /teams/route.ts          → GET: return list of teams
+  /teams/update/route.ts   → POST: update a team’s progress
+/lib/db.ts                 → Mock database (JSON or array)
+
+🗂️ Mock Database
+
+Use a simple in-memory array for now:
+
+export const teams = [
+  { id: 1, name: "Team Alpha", score: 85 },
+  { id: 2, name: "Cyber Owls", score: 92 },
+  { id: 3, name: "Night Coders", score: 67 },
+  { id: 4, name: "Pixel Pirates", score: 40 }
+];
+
+
+Expose it through the API.
+
+🔌 API Endpoints
+GET /api/teams
+
+Returns:
+
+[
+  { "id": 1, "name": "Team Alpha", "score": 85 }
+]
+
+POST /api/teams/update
+
+Body example:
+
+{ "id": 2, "score": 95 }
+
+
+Updates the score in the mock DB.
+
+🎨 UI Requirements
+Podium component
+
+Show top 3 teams visually
+
+Centered, with animated heights (1st > 2nd > 3rd)
+
+Leaderboard component
+
+Table with:
+
+Rank
+
+Team name
+
+Score
+
+Sort teams by score descending
+
+Highlight top 3 rows
+
+Progress bars
+
+Reusable <ProgressBar value={score} />
+
+🌈 Styling
+
+TailwindCSS
+
+Light, modern dashboard layout
+
+High contrast + keyboard accessible
+
+Smooth transitions (e.g. podium animation)
+
+🏁 Final Requirements
+
+Should run fully inside CodeSandbox
+
+Must be a true full-stack app (API + Frontend)
+
+Data should load dynamically from API
+
+Clean code and component separation
+
+Title:
+Podium des Concours — Nuit de l'Info 2025
