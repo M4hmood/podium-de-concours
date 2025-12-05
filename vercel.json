@@ -1,9 +1,14 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "env": {
+    "NODE_ENV": "production"
+  },
   "builds": [
     {
       "src": "dist/index.cjs",
-      "use": "@vercel/node"
+      "use": "@vercel/node@3.1.0"
     }
   ],
   "routes": [
@@ -11,10 +16,5 @@
       "src": "/(.*)",
       "dest": "dist/index.cjs"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "buildCommand": "npm run build",
-  "installCommand": "npm install"
+  ]
 }
