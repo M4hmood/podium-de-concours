@@ -26,22 +26,29 @@ export default function ProgressBar({
   }, [percentage]);
 
   const heightClass = {
-    sm: "h-1.5",
-    md: "h-2.5",
-    lg: "h-3.5",
+    sm: "h-2",
+    md: "h-3",
+    lg: "h-4",
   }[size];
 
   const bgGradient = {
-    default: "bg-primary",
-    gold: "bg-gradient-to-r from-amber-400 to-yellow-500",
-    silver: "bg-gradient-to-r from-slate-300 to-slate-400",
-    bronze: "bg-gradient-to-r from-orange-400 to-amber-600",
+    default: "bg-gradient-to-r from-primary via-primary to-primary/80",
+    gold: "bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500",
+    silver: "bg-gradient-to-r from-slate-300 via-slate-200 to-slate-400",
+    bronze: "bg-gradient-to-r from-orange-400 via-amber-500 to-orange-500",
+  }[variant];
+
+  const glowClass = {
+    default: "",
+    gold: "shadow-[0_0_12px_rgba(251,191,36,0.6)]",
+    silver: "shadow-[0_0_10px_rgba(148,163,184,0.5)]",
+    bronze: "shadow-[0_0_10px_rgba(251,146,60,0.5)]",
   }[variant];
 
   return (
     <div className="flex items-center gap-3 w-full" data-testid="progress-bar">
       <div
-        className={`flex-1 ${heightClass} bg-muted rounded-full overflow-hidden`}
+        className={`flex-1 ${heightClass} bg-muted/50 rounded-full overflow-hidden relative`}
         role="progressbar"
         aria-valuenow={value}
         aria-valuemin={0}
@@ -49,12 +56,17 @@ export default function ProgressBar({
         aria-label={`Progress: ${value} out of ${maxValue}`}
       >
         <div
-          className={`${heightClass} ${bgGradient} rounded-full transition-all duration-1000 ease-out`}
+          className={`${heightClass} ${bgGradient} ${glowClass} rounded-full transition-all duration-1000 ease-out relative`}
           style={{ width: `${animatedWidth}%` }}
-        />
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-full" />
+          {variant !== "default" && (
+            <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-r from-transparent to-white/30 rounded-full" />
+          )}
+        </div>
       </div>
       {showLabel && (
-        <span className="text-sm font-semibold tabular-nums text-muted-foreground min-w-[3rem] text-right">
+        <span className="text-sm font-bold tabular-nums text-foreground min-w-[3rem] text-right">
           {value}%
         </span>
       )}
