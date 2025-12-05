@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Settings } from "lucide-react";
+import { Settings, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Team {
@@ -30,9 +30,10 @@ interface Team {
 interface ScoreUpdateDialogProps {
   teams: Team[];
   onUpdateScore: (teamId: number, newScore: number) => void;
+  isUpdating?: boolean;
 }
 
-export default function ScoreUpdateDialog({ teams, onUpdateScore }: ScoreUpdateDialogProps) {
+export default function ScoreUpdateDialog({ teams, onUpdateScore, isUpdating }: ScoreUpdateDialogProps) {
   const [open, setOpen] = useState(false);
   const [selectedTeamId, setSelectedTeamId] = useState<string>("");
   const [newScore, setNewScore] = useState<string>("");
@@ -119,8 +120,15 @@ export default function ScoreUpdateDialog({ teams, onUpdateScore }: ScoreUpdateD
           <Button variant="outline" onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit} data-testid="button-submit-score">
-            Update
+          <Button onClick={handleSubmit} disabled={isUpdating} data-testid="button-submit-score">
+            {isUpdating ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Updating...
+              </>
+            ) : (
+              "Update"
+            )}
           </Button>
         </DialogFooter>
       </DialogContent>

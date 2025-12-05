@@ -1,34 +1,45 @@
-import { useState } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { queryClient, apiRequest } from "@/lib/queryClient";
 import HeroHeader from "@/components/HeroHeader";
 import Podium from "@/components/Podium";
 import Leaderboard from "@/components/Leaderboard";
 import ScoreUpdateDialog from "@/components/ScoreUpdateDialog";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Badge } from "@/components/ui/badge";
-import { Zap } from "lucide-react";
-
-// todo: remove mock functionality - this will be replaced with API data
-const initialTeams = [
-  { id: 1, name: "Team Alpha", score: 85 },
-  { id: 2, name: "Cyber Owls", score: 92 },
-  { id: 3, name: "Night Coders", score: 67 },
-  { id: 4, name: "Pixel Pirates", score: 40 },
-  { id: 5, name: "Code Ninjas", score: 55 },
-  { id: 6, name: "Binary Blazers", score: 78 },
-  { id: 7, name: "Data Dragons", score: 63 },
-  { id: 8, name: "Tech Titans", score: 71 },
-];
+import { Skeleton } from "@/components/ui/skeleton";
+import { Zap, AlertCircle } from "lucide-react";
+import type { Team } from "@shared/schema";
 
 export default function Dashboard() {
-  // todo: remove mock functionality - replace with useQuery
-  const [teams, setTeams] = useState(initialTeams);
+  const { data: teams = [], isLoading, error } = useQuery<Team[]>({
+    queryKey: ["/api/teams"],
+  });
+
+  const updateScoreMutation = useMutation({
+    mutationFn: async ({ id, score }: { id: number; score: number }) => {
+      const response = await apiRequest("POST", "/api/teams/update", { id, score });
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/teams"] });
+    },
+  });
 
   const handleUpdateScore = (teamId: number, newScore: number) => {
-    // todo: remove mock functionality - replace with mutation
-    setTeams((prev) =>
-      prev.map((t) => (t.id === teamId ? { ...t, score: newScore } : t))
-    );
+    updateScoreMutation.mutate({ id: teamId, score: newScore });
   };
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <AlertCircle className="w-12 h-12 text-destructive mx-auto mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Failed to load teams</h2>
+          <p className="text-muted-foreground">Please try refreshing the page</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -48,7 +59,11 @@ export default function Dashboard() {
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               Live
             </Badge>
-            <ScoreUpdateDialog teams={teams} onUpdateScore={handleUpdateScore} />
+            <ScoreUpdateDialog 
+              teams={teams} 
+              onUpdateScore={handleUpdateScore}
+              isUpdating={updateScoreMutation.isPending}
+            />
             <ThemeToggle />
           </div>
         </div>
@@ -59,7 +74,15 @@ export default function Dashboard() {
 
         <section className="py-8" aria-labelledby="podium-title">
           <h2 id="podium-title" className="sr-only">Top 3 Teams</h2>
-          <Podium teams={teams} />
+          {isLoading ? (
+            <div className="flex items-end justify-center gap-3 md:gap-6 py-8">
+              <Skeleton className="w-28 md:w-36 h-36 md:h-48 rounded-t-2xl" />
+              <Skeleton className="w-28 md:w-36 h-48 md:h-64 rounded-t-2xl" />
+              <Skeleton className="w-28 md:w-36 h-28 md:h-40 rounded-t-2xl" />
+            </div>
+          ) : (
+            <Podium teams={teams} />
+          )}
         </section>
 
         <div className="relative my-12">
@@ -75,7 +98,15 @@ export default function Dashboard() {
 
         <section className="py-8 pb-16" aria-labelledby="leaderboard-title">
           <h2 id="leaderboard-title" className="sr-only">Full Leaderboard</h2>
-          <Leaderboard teams={teams} />
+          {isLoading ? (
+            <div className="space-y-2">
+              {[...Array(5)].map((_, i) => (
+                <Skeleton key={i} className="h-16 w-full rounded-lg" />
+              ))}
+            </div>
+          ) : (
+            <Leaderboard teams={teams} />
+          )}
         </section>
       </main>
 
