@@ -4,5 +4,11 @@
   "installCommand": "npm install",
   "env": {
     "NODE_ENV": "production"
+  },
+  "public": "dist/public",
+  "functions": {
+    "api/**": {
+      "runtime": "@vercel/node@3"
+    }
   }
 }
