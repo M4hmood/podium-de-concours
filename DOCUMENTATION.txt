@@ -1,0 +1,352 @@
+================================================================================
+                    PODIUM DE CONCOURS - USER DOCUMENTATION
+================================================================================
+
+PROJECT OVERVIEW
+================================================================================
+
+Podium de Concours is a real-time competition management and leaderboard application
+designed to display live rankings, team scores, and achievement tracking for competitive
+events. The application provides an intuitive interface for organizing and monitoring
+multiple competing teams with dynamic score updates.
+
+
+WHAT IS PODIUM DE CONCOURS?
+================================================================================
+
+Podium de Concours (French for "Competition Podium") is a modern web-based platform
+that allows event organizers and participants to:
+
+  • View live team rankings and leaderboards
+  • Track real-time score updates
+  • Monitor achievement badges and milestones
+  • Display countdown timers for event phases
+  • Present competition standings on public displays
+  • Update team scores dynamically during competitions
+
+
+KEY FEATURES
+================================================================================
+
+1. LIVE LEADERBOARD
+   - Real-time display of all competing teams
+   - Teams are ranked by score in descending order
+   - Instant score updates without page refresh
+   - Color-coded team cards for easy identification
+
+2. TEAM MANAGEMENT
+   - Display of team names and current scores
+   - Team identification and organization
+   - Score tracking and updates
+   - Achievement progress monitoring
+
+3. PODIUM DISPLAY
+   - Top 3 teams highlighted in a visual podium format
+   - 1st place (Gold), 2nd place (Silver), 3rd place (Bronze)
+   - Large, clear display suitable for public viewing
+   - Visual indicators of winning teams
+
+4. REAL-TIME UPDATES
+   - Scores update instantly across all connected clients
+   - No need to manually refresh the page
+   - Synchronized leaderboard across multiple devices
+   - Live countdown timer for competition phases
+
+5. ACHIEVEMENTS & BADGES
+   - Recognition system for team accomplishments
+   - Visual badges for milestones and achievements
+   - Progress tracking towards badges
+   - Team performance indicators
+
+6. RESPONSIVE DESIGN
+   - Works on desktop computers and large displays
+   - Optimized for projector displays at events
+   - Mobile-friendly interface
+   - Adapts to different screen sizes
+
+
+HOW TO USE THE APPLICATION
+================================================================================
+
+ACCESSING THE APPLICATION
+1. Open your web browser
+2. Navigate to the application URL (provided by your system administrator)
+3. The leaderboard page loads automatically
+
+VIEWING THE LEADERBOARD
+1. The main page displays all participating teams
+2. Teams are listed in order of their current score
+3. Highest scoring team appears at the top
+4. Each team card shows:
+   - Team name
+   - Current score
+   - Any earned achievements or badges
+
+INTERPRETING THE PODIUM
+1. The top section displays the podium with the top 3 teams
+2. 1st place team is shown in the center (highest position)
+3. 2nd and 3rd place teams are shown on either side
+4. Visual medals indicate placement (Gold, Silver, Bronze)
+
+MONITORING SCORES
+1. Scores update automatically in real-time
+2. Watch the leaderboard for score changes
+3. Teams will move up or down based on score updates
+4. The ranking is recalculated immediately when scores change
+
+TRACKING ACHIEVEMENTS
+1. Look for badge icons on team cards
+2. Badges represent milestones and accomplishments
+3. Progress indicators show achievement completion status
+4. Team achievements contribute to overall standings
+
+USING THE COUNTDOWN TIMER
+1. Check the top of the page for the countdown timer
+2. The timer shows remaining time for the current competition phase
+3. Timer updates every second
+4. Use the timer to manage event pacing
+
+THEME PREFERENCES
+1. Look for the theme toggle button (usually top-right corner)
+2. Switch between light and dark modes as preferred
+3. Theme preference is saved for future visits
+4. Choose the theme that's most comfortable for viewing
+
+
+UNDERSTANDING TEAM CARDS
+================================================================================
+
+Each team card displays:
+
+TEAM NAME
+- The official name of the competing team
+
+CURRENT SCORE
+- The team's total points accumulated during the competition
+- Larger numbers indicate higher performance
+
+ACHIEVEMENT BADGES
+- Visual indicators of earned milestones
+- Different badges represent different accomplishments
+- More badges indicate greater achievement level
+
+SCORE INDICATOR
+- Visual representation of the team's standing
+- Position changes reflected in real-time
+- Color coding helps identify team status
+
+
+LIVE EVENT MANAGEMENT
+================================================================================
+
+FOR EVENT COORDINATORS
+
+Updating Scores
+- Scores are updated through the system administration panel
+- Changes appear on all connected screens immediately
+- Score updates can be made in real-time during competition
+- Previous scores are retained for historical tracking
+
+Adding Teams
+- Teams should be registered before the competition begins
+- Team information is configured in the admin panel
+- Teams appear on the leaderboard once added to the system
+
+Managing Competition Phases
+- Different competition phases may have countdowns
+- Each phase shows its remaining time
+- Organizers can manage phase timing through admin settings
+
+Awarding Achievements
+- Achievements can be awarded as teams meet milestones
+- Badge notifications appear immediately on team cards
+- Achievement history is maintained for record-keeping
+
+
+DISPLAY BEST PRACTICES
+================================================================================
+
+FOR PUBLIC DISPLAYS (PROJECTORS/LARGE SCREENS)
+
+1. POSITIONING
+   - Place the display where all participants can see it
+   - Position at a height visible to standing audience
+   - Ensure adequate viewing distance (typically 1.5-3 meters)
+
+2. BRIGHTNESS
+   - Set display brightness to match room lighting
+   - Avoid glare from windows or bright lights
+   - Adjust contrast for readability
+
+3. REFRESH
+   - Page auto-refreshes; leave it running during competition
+   - No manual intervention needed during scoring updates
+   - Monitor for any connection issues
+
+4. ROOM SETUP
+   - Keep the display in a central, visible location
+   - Ensure stable internet connection
+   - Use a dedicated device if possible
+   - Keep the device plugged in during events
+
+
+TROUBLESHOOTING
+================================================================================
+
+SCORES NOT UPDATING
+- Check your internet connection
+- Refresh the page manually (press F5 or Ctrl+R)
+- Verify the admin panel has submitted score updates
+- Contact system administrator if problem persists
+
+PAGE NOT LOADING
+- Check that you have the correct URL
+- Verify internet connection is active
+- Clear browser cache and try again
+- Try using a different browser
+
+DISPLAY LOOKS WRONG
+- Refresh the page
+- Check that browser window is not zoomed incorrectly (Ctrl+0 to reset)
+- Try using the theme toggle to switch display modes
+- Check display resolution settings
+
+SCORES SHOWING INCORRECTLY
+- Verify the scores were entered correctly in the admin panel
+- Wait a moment for the update to propagate to all screens
+- Refresh the page to ensure latest data is displayed
+- Contact system administrator to verify data integrity
+
+
+FEATURES BY USER ROLE
+================================================================================
+
+PUBLIC VIEWERS
+- View current leaderboard standings
+- View team scores and rankings
+- See achievement badges
+- View countdown timers
+- Switch between light/dark themes
+
+EVENT ORGANIZERS
+- All public viewer features, plus:
+- Update team scores
+- Manage achievement awards
+- Control competition phases
+- Access detailed event statistics
+
+SYSTEM ADMINISTRATORS
+- All organizer features, plus:
+- Add/remove teams
+- Configure system settings
+- Manage user accounts
+- Configure competition rules and parameters
+
+
+TECHNICAL SPECIFICATIONS
+================================================================================
+
+SYSTEM REQUIREMENTS
+
+Browser Compatibility
+- Modern web browsers (Chrome, Firefox, Safari, Edge)
+- JavaScript enabled
+- Cookies enabled for better experience
+
+Connection Requirements
+- Stable internet connection required
+- Minimum bandwidth: 1 Mbps recommended
+- Low latency connection for real-time updates
+
+Display Requirements
+- Minimum screen resolution: 1024x768
+- Recommended resolution: 1920x1080 or higher
+- For public displays: 2K or 4K recommended
+
+Device Compatibility
+- Desktop computers
+- Laptops
+- Tablets (iPad, Android tablets)
+- Mobile phones (responsive design)
+
+
+TIPS FOR BEST EXPERIENCE
+================================================================================
+
+1. KEEP THE PAGE OPEN
+   Keep the application running throughout the event to see live updates
+
+2. USE FULLSCREEN MODE
+   For display screens, use fullscreen mode (F11) to maximize viewing area
+
+3. DISABLE SCREEN SAVER
+   Prevent screen saver from interrupting display during competition
+
+4. STABLE CONNECTION
+   Use wired Ethernet when possible for more stable connection than WiFi
+
+5. MULTIPLE DEVICES
+   You can have the leaderboard open on multiple screens simultaneously
+
+6. BACKUP DISPLAY
+   Keep a backup device with the page loaded in case primary display fails
+
+7. TAKE SCREENSHOTS
+   Screenshots can be taken for record-keeping and social media sharing
+
+8. MOBILE VIEW
+   Open on mobile devices to follow competition on the go
+
+
+SUPPORT & ASSISTANCE
+================================================================================
+
+If you experience issues or have questions:
+
+1. Check this documentation for solutions
+2. Try the troubleshooting section above
+3. Contact your event coordinator or system administrator
+4. Visit the application dashboard for additional help options
+
+For technical support, provide:
+- What browser you're using
+- What device/screen size
+- Description of the problem
+- Steps you took before the problem occurred
+- Any error messages you see
+
+
+PRIVACY & SECURITY
+================================================================================
+
+DATA HANDLING
+- Team scores and standings are displayed in real-time
+- Historical data is maintained for event records
+- Personal information is protected and not displayed publicly
+
+SECURITY MEASURES
+- Secure connection recommended (HTTPS)
+- Admin functions require authentication
+- Score updates logged for accountability
+- Regular backups of competition data
+
+
+ADDITIONAL RESOURCES
+================================================================================
+
+For more information or advanced features:
+- Contact your system administrator
+- Visit the help section within the application
+- Review additional guides provided by your event organizer
+
+
+================================================================================
+                            END OF DOCUMENTATION
+================================================================================
+
+Version: 1.0
+Last Updated: December 2025
+Application: Podium de Concours
+Status: Production Ready
+
+================================================================================
